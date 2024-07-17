@@ -6,7 +6,7 @@
                 <KeyValuePair key="thread_id" value="$${ctx:thread_id}"/>
                 <KeyValuePair key="trace_id" value="$${ctx:trace_id}"/>
                 <KeyValuePair key="pod_name" value="AuthService"/>
-                <KeyValuePair key="sample_id" value="$${ctx:sample_id}"/>
+                <KeyValuePair key="pod_id" value="$${ctx:pod_id}"/>
                 <KeyValuePair key="authToken" value="$${ctx:authToken}"/>
                 <KeyValuePair key="message" value="$${event:getMessage}"/>
                 <KeyValuePair key="level" value="$${event:level}"/>
@@ -19,7 +19,7 @@
                 <KeyValuePair key="thread_id" value="$${ctx:thread_id}"/>
                 <KeyValuePair key="trace_id" value="$${ctx:trace_id}"/>
                 <KeyValuePair key="pod_name" value="AuthService"/>
-                <KeyValuePair key="sample_id" value="$${ctx:sample_id}"/>
+                <KeyValuePair key="pod_id" value="$${ctx:pod_id}"/>
                 <KeyValuePair key="authToken" value="$${ctx:authToken}"/>
                 <KeyValuePair key="message" value="$${event:getMessage}"/>
                 <KeyValuePair key="level" value="$${event:level}"/>

@@ -3,6 +3,7 @@ server:
 spring:
   application:
     name: auth-service
+    version: @buildVersion@
   datasource:
     url: jdbc:mysql://localhost:3306/db_name
     username: db_username

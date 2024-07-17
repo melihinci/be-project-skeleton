@@ -18,6 +18,8 @@
     <spring-cloud.version>2021.0.4</spring-cloud.version>
     <spring-cloud-starter.version>3.1.8</spring-cloud-starter.version>
     <spring-boot-starter.version>2.5.5</spring-boot-starter.version>
+    <buildVersion>${maven.build.timestamp}</buildVersion>
+    <maven.build.timestamp.format>y.D.m</maven.build.timestamp.format>
   </properties>
   <dependencyManagement>
     <dependencies>
