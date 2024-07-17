@@ -15,13 +15,12 @@ public class WebConfig implements WebMvcConfigurer {
     public WebConfig(Environment env) {
         this.env = env;
     }
-    private final String[] excludePathPatterns = new String[] {"/auth/heartbeat","/auth/login", "/auth/signup", "/auth/validate"};
+
+    private final String[] excludePathPatterns = new String[] {"/heartbeat"};
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
+        registry.addInterceptor(new AuthFilter()).addPathPatterns("/**").excludePathPatterns(excludePathPatterns);
         registry.addInterceptor(new LoggingInterceptor(env));
-        registry.addInterceptor(new AuthFilter())
-                .addPathPatterns("/**")
-                .excludePathPatterns(excludePathPatterns);
     }
 }

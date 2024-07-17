@@ -18,18 +18,18 @@ spring:
           uri: lb://auth-service
           predicates:
             - Path=/auth/**
-        - id: sample-one-service
-          uri: lb://sample-one-service
+        - id: first-service
+          uri: lb://first-service
           predicates:
-            - Path=/sample-one/**
-        - id: sample-two-service
-          uri: lb://sample-two-service
+            - Path=/first/**
+        - id: second-service
+          uri: lb://second-service
           predicates:
-            - Path=/sample-two/**
-        - id: sample-three-service
-          uri: lb://sample-three-service
+            - Path=/second/**
+        - id: third-service
+          uri: lb://third-service
           predicates:
-            - Path=/sample-three/**
+            - Path=/third/**
 eureka:
   client:
     serviceUrl:

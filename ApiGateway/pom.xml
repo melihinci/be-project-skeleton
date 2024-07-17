@@ -17,6 +17,9 @@
     <maven.compiler.target>11</maven.compiler.target>
     <spring-cloud.version>2021.0.4</spring-cloud.version>
     <spring-cloud-starter.version>3.1.8</spring-cloud-starter.version>
+    <spring-boot-starter.version>2.5.5</spring-boot-starter.version>
+    <buildVersion>${maven.build.timestamp}</buildVersion>
+    <maven.build.timestamp.format>y.D.m</maven.build.timestamp.format>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -41,9 +44,20 @@
       <version>${spring-cloud-starter.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <version> ${spring-boot-starter.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
       <version>${spring-cloud-starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.24</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 </project>

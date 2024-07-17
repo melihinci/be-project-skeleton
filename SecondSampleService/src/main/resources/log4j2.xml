@@ -5,26 +5,38 @@
             <JsonLayout compact="true" eventEol="true">
                 <KeyValuePair key="thread_id" value="$${ctx:thread_id}"/>
                 <KeyValuePair key="trace_id" value="$${ctx:trace_id}"/>
-                <KeyValuePair key="pod_name" value="AuthService"/>
+                <KeyValuePair key="pod_name" value="$${ctx:pod_name}"/>
                 <KeyValuePair key="pod_id" value="$${ctx:pod_id}"/>
                 <KeyValuePair key="authToken" value="$${ctx:authToken}"/>
                 <KeyValuePair key="message" value="$${event:getMessage}"/>
                 <KeyValuePair key="level" value="$${event:level}"/>
                 <KeyValuePair key="loggerName" value="$${event:loggerName}"/>
                 <KeyValuePair key="pod_version" value="$${ctx:pod_version}"/>
+                <KeyValuePair key="request_type" value="$${ctx:request_type}"/>
+                <KeyValuePair key="exception" value="$${event:throwable}"/>
+                <KeyValuePair key="exception_message" value="$${event:throwable:getMessage}"/>
+                <KeyValuePair key="exception_stacktrace" value="$${event:throwable:stackTrace}"/>
+                <KeyValuePair key="request_url" value="$${ctx:request_url}"/>
+                <KeyValuePair key="request_body" value="$${ctx:request_body}"/>
             </JsonLayout>
         </Console>
         <File name="File" fileName="logs/app.log">
             <JsonLayout compact="true" eventEol="true">
                 <KeyValuePair key="thread_id" value="$${ctx:thread_id}"/>
                 <KeyValuePair key="trace_id" value="$${ctx:trace_id}"/>
-                <KeyValuePair key="pod_name" value="AuthService"/>
+                <KeyValuePair key="pod_name" value="$${ctx:pod_name}"/>
                 <KeyValuePair key="pod_id" value="$${ctx:pod_id}"/>
                 <KeyValuePair key="authToken" value="$${ctx:authToken}"/>
                 <KeyValuePair key="message" value="$${event:getMessage}"/>
                 <KeyValuePair key="level" value="$${event:level}"/>
                 <KeyValuePair key="loggerName" value="$${event:loggerName}"/>
                 <KeyValuePair key="pod_version" value="$${ctx:pod_version}"/>
+                <KeyValuePair key="request_type" value="$${ctx:request_type}"/>
+                <KeyValuePair key="exception" value="$${event:throwable}"/>
+                <KeyValuePair key="exception_message" value="$${event:throwable:getMessage}"/>
+                <KeyValuePair key="exception_stacktrace" value="$${event:throwable:stackTrace}"/>
+                <KeyValuePair key="request_url" value="$${ctx:request_url}"/>
+                <KeyValuePair key="request_body" value="$${ctx:request_body}"/>
             </JsonLayout>
         </File>
     </Appenders>

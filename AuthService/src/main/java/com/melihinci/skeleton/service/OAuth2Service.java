@@ -1,8 +1,7 @@
 package com.melihinci.skeleton.service;
 
 import com.melihinci.skeleton.entity.User;
-import com.melihinci.skeleton.request.LoginRequest;
-import org.apache.http.HttpException;
+import com.melihinci.skeleton.request.AuthRequest;
 import org.apache.http.auth.InvalidCredentialsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +17,9 @@ public class OAuth2Service {
     @Autowired
     TokenCacheService tokenCacheService;
 
-    public String authenticate(LoginRequest loginRequest) throws InvalidCredentialsException {
-        User user = userService.findByUsername(loginRequest.getUsername());
-        if (user != null && userService.checkPassword(user, loginRequest.getPassword())) {
+    public String authenticate(AuthRequest authRequest) throws InvalidCredentialsException {
+        User user = userService.findByUsername(authRequest.getUsername());
+        if (user != null && userService.checkPassword(user, authRequest.getPassword())) {
             String token = UUID.randomUUID().toString();
             tokenCacheService.storeToken(token, user);
             return token;
@@ -31,5 +30,10 @@ public class OAuth2Service {
     public User validateToken(String token) throws InvalidCredentialsException{
         return tokenCacheService.getUserByToken(token)
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid token!"));
+    }
+
+    public User signup(AuthRequest authRequest) {
+        // TODO: Validate the request parameters
+       return userService.createUser(authRequest);
     }
 }
