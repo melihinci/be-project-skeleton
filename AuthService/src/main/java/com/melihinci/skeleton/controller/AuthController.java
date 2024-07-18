@@ -36,7 +36,6 @@ public class AuthController {
     @PostMapping("/auth/signup")
     public ResponseEntity<BaseResponse> signup(@RequestBody AuthRequest authRequest) {
         oAuth2Service.signup(authRequest);
-        return ResponseEntity
-                .ok(new BaseResponse("User created successfully", 200));
+        return ResponseEntity.ok(new BaseResponse("User created successfully", 200, null));
     }
 }

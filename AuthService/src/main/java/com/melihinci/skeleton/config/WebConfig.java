@@ -1,6 +1,6 @@
 package com.melihinci.skeleton.config;
 
-import com.melihinci.skeleton.advice.AuthFilter;
+import com.melihinci.skeleton.advice.AuthenticationFilter;
 import com.melihinci.skeleton.advice.LoggingInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -16,14 +16,8 @@ public class WebConfig implements WebMvcConfigurer {
         this.env = env;
     }
 
-    private final String[] excludePathPatterns = new String[]{"/auth/heartbeat", "/auth/login", "/auth/signup", "/auth/validate"};
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
         registry.addInterceptor(new LoggingInterceptor(env));
-        registry.addInterceptor(new AuthFilter())
-                .addPathPatterns("/**")
-                .excludePathPatterns(excludePathPatterns);
     }
 }

@@ -16,7 +16,7 @@ public class WebConfig implements WebMvcConfigurer {
         this.env = env;
     }
 
-    private final String[] excludePathPatterns = new String[]{"/heartbeat"};
+    private final String[] excludePathPatterns = new String[]{"/heartbeat", "swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**"};
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

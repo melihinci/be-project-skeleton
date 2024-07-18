@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class BaseResponse {
     private String message;
     private int status;
+    private String traceId;
 }
