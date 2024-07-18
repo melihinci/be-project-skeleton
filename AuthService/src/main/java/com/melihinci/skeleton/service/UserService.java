@@ -17,6 +17,7 @@ public class UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
     private static final String ROLE_USER = "ROLE_USER";
+
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
@@ -26,6 +27,10 @@ public class UserService {
     }
 
     public User createUser(AuthRequest authRequest) {
-      return userRepository.save(User.builder().password(passwordEncoder.encode(authRequest.getPassword())).username(authRequest.getUsername()).authorities(ROLE_USER).build());
+        return userRepository.save(User.builder()
+                .password(passwordEncoder.encode(authRequest.getPassword()))
+                .username(authRequest.getUsername())
+                .authorities(ROLE_USER)
+                .build());
     }
 }

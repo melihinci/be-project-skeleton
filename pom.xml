@@ -13,8 +13,28 @@
     <module>ThirdSampleService</module>
     <module>EurekaServer</module>
   </modules>
+  <properties>
+    <formatter.config.path>${project.basedir}/formatter.xml</formatter.config.path>
+  </properties>
   <build>
     <plugins>
+      <plugin>
+        <groupId>net.revelc.code.formatter</groupId>
+        <artifactId>formatter-maven-plugin</artifactId>
+        <version>2.17.1</version>
+        <configuration>
+          <configFile>${formatter.config.path}</configFile>
+          <lineEnding>LF</lineEnding>
+          <encoding>UTF-8</encoding>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>

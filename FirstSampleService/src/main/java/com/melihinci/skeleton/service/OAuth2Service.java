@@ -12,7 +12,7 @@ public class OAuth2Service {
     @Autowired
     TokenCacheService tokenCacheService;
 
-    public User validateToken(String token) throws InvalidCredentialsException{
+    public User validateToken(String token) throws InvalidCredentialsException {
         return tokenCacheService.getUserByToken(token)
                 .orElseThrow(() -> new InvalidCredentialsException("Invalid token!"));
     }

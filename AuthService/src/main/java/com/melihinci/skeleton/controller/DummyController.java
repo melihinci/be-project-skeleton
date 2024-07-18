@@ -11,6 +11,9 @@ public class DummyController {
 
     @GetMapping("/auth/heartbeat")
     public ResponseEntity<BaseResponse> heartbeat() {
-        return ResponseEntity.ok(BaseResponse.builder().message("ImAlive.").status(200).build());
+        return ResponseEntity.ok(BaseResponse.builder()
+                .message("ImAlive.")
+                .status(200)
+                .build());
     }
 }

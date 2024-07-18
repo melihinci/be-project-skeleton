@@ -17,10 +17,12 @@ public class TokenCacheService {
     private static final String TOKEN_PREFIX = "xAuthToken ";
 
     public void storeToken(String token, User user) {
-        redisTemplate.opsForValue().set(TOKEN_PREFIX + token, user, 1, TimeUnit.HOURS); // Token'ı 1 saat geçerli yap
+        redisTemplate.opsForValue()
+                .set(TOKEN_PREFIX + token, user, 1, TimeUnit.HOURS); // Token'ı 1 saat geçerli yap
     }
 
     public Optional<User> getUserByToken(String token) {
-        return Optional.of((User) redisTemplate.opsForValue().get(TOKEN_PREFIX + token));
+        return Optional.of((User) redisTemplate.opsForValue()
+                .get(TOKEN_PREFIX + token));
     }
 }

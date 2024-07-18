@@ -15,7 +15,9 @@ public class WebConfig implements WebMvcConfigurer {
     public WebConfig(Environment env) {
         this.env = env;
     }
-    private final String[] excludePathPatterns = new String[] {"/auth/heartbeat","/auth/login", "/auth/signup", "/auth/validate"};
+
+    private final String[] excludePathPatterns = new String[]{"/auth/heartbeat", "/auth/login", "/auth/signup", "/auth/validate"};
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
