@@ -12,6 +12,7 @@
     <module>SecondSampleService</module>
     <module>ThirdSampleService</module>
     <module>EurekaServer</module>
+    <module>Apigateway2</module>
   </modules>
   <properties>
     <formatter.config.path>${project.basedir}/formatter.xml</formatter.config.path>

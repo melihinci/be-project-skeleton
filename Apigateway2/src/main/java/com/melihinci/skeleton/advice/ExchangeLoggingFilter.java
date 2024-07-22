@@ -53,7 +53,8 @@ public class ExchangeLoggingFilter implements GlobalFilter, Ordered {
     private DispatchLog saveDispatchLog(ServerWebExchange exchange, long startTime, String traceId) {
         DispatchLog dispatchLog = new DispatchLog();
         dispatchLog.setTraceId(traceId);
-        dispatchLog.setRequestMethod(exchange.getRequest().getMethod().name());
+        dispatchLog.setRequestMethod(exchange.getRequest()
+                                             .getMethodValue());
         dispatchLog.setRequestTime(LocalDateTime.ofEpochSecond(startTime / 1000, 0, ZoneOffset.UTC));
         dispatchLog.setRequestUri(exchange.getRequest()
                                           .getURI()

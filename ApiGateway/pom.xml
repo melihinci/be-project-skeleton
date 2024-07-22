@@ -12,12 +12,10 @@
   <artifactId>ApiGateway</artifactId>
   <version>1.0-SNAPSHOT</version>
   <properties>
-    <spring-boot.version>2.6.6</spring-boot.version>
+    <spring-boot.version>3.3.1</spring-boot.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <spring-cloud.version>2021.0.4</spring-cloud.version>
-    <spring-cloud-starter.version>3.1.8</spring-cloud-starter.version>
-    <spring-boot-starter.version>2.5.5</spring-boot-starter.version>
     <buildVersion>${maven.build.timestamp}</buildVersion>
     <maven.build.timestamp.format>y.D.m</maven.build.timestamp.format>
   </properties>
@@ -34,40 +32,47 @@
   </dependencyManagement>
   <dependencies>
     <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.3.1</version>
+    </dependency>
+    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.24</version>
       <scope>compile</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-security -->
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-      <version>${spring-boot-starter.version}</version>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-security</artifactId>
+      <version>1.7.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.3.13</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <version>${spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
       <version>${spring-boot.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-gateway</artifactId>
-      <version>${spring-cloud-starter.version}</version>
+      <version>3.0.8</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-      <version>${spring-cloud-starter.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-webflux-ui</artifactId>
-      <version>1.7.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-security</artifactId>
-      <version>1.7.0</version>
+      <version>4.1.3</version>
     </dependency>
   </dependencies>
   <build>
@@ -87,8 +92,12 @@
           <configFile>${project.parent.basedir}/formatter.xml</configFile>
           <encoding>UTF-8</encoding>
           <lineEnding>LF</lineEnding>
-          <includeSubPackages>true</includeSubPackages>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${spring-boot.version}</version>
       </plugin>
     </plugins>
   </build>
