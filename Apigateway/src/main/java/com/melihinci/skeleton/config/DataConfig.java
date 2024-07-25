@@ -7,9 +7,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import javax.persistence.EntityManagerFactory;
 
 @Configuration
 @EntityScan(basePackages = "com.melihinci.skeleton.entity")
@@ -21,7 +20,7 @@ public class DataConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan(new String[] { "com.melihinci.skeleton.entity" });
+        em.setPackagesToScan(new String[]{"com.melihinci.skeleton.entity"});
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
     }

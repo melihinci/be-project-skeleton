@@ -8,9 +8,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class ApiGatewayApplication {
 
     public static void main(String[] args) {
-            new SpringApplicationBuilder(ApiGatewayApplication.class)
-                    .web(WebApplicationType.REACTIVE) // .REACTIVE, .SERVLET
-                    .run(args);
+        new SpringApplicationBuilder(ApiGatewayApplication.class).web(WebApplicationType.REACTIVE) // .REACTIVE, .SERVLET
+                                                                 .run(args);
     }
-
 }
