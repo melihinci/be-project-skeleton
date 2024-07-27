@@ -19,10 +19,9 @@ public class OAuth2Service {
 
     public String authenticate(AuthRequest authRequest) throws InvalidCredentialsException {
         User user = userService.findByUsername(authRequest.getUsername());
-        if (user != null && userService.checkPassword(user, authRequest
-                .getPassword())) {
+        if (user != null && userService.checkPassword(user, authRequest.getPassword())) {
             String token = UUID.randomUUID()
-                    .toString();
+                               .toString();
             tokenCacheService.storeToken(token, user);
             return token;
         }
@@ -31,7 +30,7 @@ public class OAuth2Service {
 
     public User validateToken(String token) throws InvalidCredentialsException {
         return tokenCacheService.getUserByToken(token)
-                .orElseThrow(() -> new InvalidCredentialsException("Invalid token!"));
+                                .orElseThrow(() -> new InvalidCredentialsException("Invalid token!"));
     }
 
     public User signup(AuthRequest authRequest) {

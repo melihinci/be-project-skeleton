@@ -3,7 +3,7 @@ server:
 spring:
   application:
     name: auth-service
-    version: @buildVersion@
+    version: ${buildVersion}
   datasource:
     url: jdbc:postgresql://localhost:5434/userdb
     username: useruser

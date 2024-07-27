@@ -28,9 +28,9 @@ public class UserService {
 
     public User createUser(AuthRequest authRequest) {
         return userRepository.save(User.builder()
-                .password(passwordEncoder.encode(authRequest.getPassword()))
-                .username(authRequest.getUsername())
-                .authorities(ROLE_USER)
-                .build());
+                                       .password(passwordEncoder.encode(authRequest.getPassword()))
+                                       .username(authRequest.getUsername())
+                                       .authorities(ROLE_USER)
+                                       .build());
     }
 }
