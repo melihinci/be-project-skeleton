@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="eurekaserver" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="RUN">
+    <option name="ALTERNATIVE_JRE_PATH" value="corretto-11" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <module name="EurekaServer" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.melihinci.skeleton.EurekaServerApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

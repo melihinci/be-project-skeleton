@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Apigateway" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="RUN">
+    <module name="Apigateway" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.melihinci.skeleton.ApiGatewayApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

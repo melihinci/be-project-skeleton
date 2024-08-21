@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="AuthService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" folderName="RUN">
+    <module name="AuthService" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.melihinci.skeleton.AuthenticationApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
