@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Data
 @Builder
-public class User implements Serializable{
+public class User implements Serializable {
 
     private Long id;
     private String authorities;

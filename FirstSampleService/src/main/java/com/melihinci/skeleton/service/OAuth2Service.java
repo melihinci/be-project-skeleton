@@ -6,7 +6,6 @@ import org.apache.http.auth.InvalidCredentialsException;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 @RequiredArgsConstructor
 public class OAuth2Service {

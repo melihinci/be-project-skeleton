@@ -17,8 +17,7 @@ public class AuthFilter implements HandlerInterceptor {
     private final OAuth2Service authService;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String authToken = request.getHeader("X-Auth-Token");
         if (authToken == null || authToken.isEmpty()) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

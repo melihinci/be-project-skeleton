@@ -12,9 +12,9 @@ public class DummyController {
     @GetMapping("/first/heartbeat")
     public ResponseEntity<BaseResponse> heartbeat() {
         return ResponseEntity.ok(BaseResponse.builder()
-                .message("ImAlive.")
-                .status(200)
-                .build());
+                                             .message("ImAlive.")
+                                             .status(200)
+                                             .build());
     }
 
     @GetMapping("/first/secured")

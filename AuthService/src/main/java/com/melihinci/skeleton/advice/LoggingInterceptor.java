@@ -34,11 +34,13 @@ public class LoggingInterceptor implements HandlerInterceptor {
         if (cachedRequest.getHeader("X-Trace-Id") != null) {
             ThreadContext.put("trace_id", cachedRequest.getHeader("X-Trace-Id"));
         } else {
-            ThreadContext.put("trace_id", UUID.randomUUID().toString());
+            ThreadContext.put("trace_id", UUID.randomUUID()
+                                              .toString());
         }
 
         // Diğer bilgiler
-        ThreadContext.put("thread_id", String.valueOf(Thread.currentThread().getId()));
+        ThreadContext.put("thread_id", String.valueOf(Thread.currentThread()
+                                                            .getId()));
         ThreadContext.put("authToken", maskAuthToken(cachedRequest));
         ThreadContext.put("pod_id", pod_id);
         ThreadContext.put("pod_name", appName);
