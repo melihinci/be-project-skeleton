@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedHashMap;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +23,13 @@ public class TokenCacheService {
     }
 
     public Optional<User> getUserByToken(String token) {
-        return Optional.of((User) redisTemplate.opsForValue()
-                                               .get(TOKEN_PREFIX + token));
+        LinkedHashMap<String, Object> linkedHashMap = (LinkedHashMap) redisTemplate.opsForValue()
+                                                                                   .get(TOKEN_PREFIX + token);
+        return linkedHashMap == null ? Optional.empty() : Optional.of(User.builder()
+                                                                          .id(Long.valueOf((String) linkedHashMap.get("id")))
+                                                                          .authorities((String) linkedHashMap.get("authorities"))
+                                                                          .username((String) linkedHashMap.get("username"))
+                                                                          .password((String) linkedHashMap.get("password"))
+                                                                          .build());
     }
 }

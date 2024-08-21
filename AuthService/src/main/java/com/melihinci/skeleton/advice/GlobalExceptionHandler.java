@@ -1,6 +1,7 @@
 package com.melihinci.skeleton.advice;
 
 import com.melihinci.skeleton.response.BaseResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.ThreadContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,10 +9,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<BaseResponse> handleInvalidCredentialsException(Exception ex) {
+        ex.printStackTrace();
         return ResponseEntity.ok()
                              .body(BaseResponse.builder()
                                                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())

@@ -28,7 +28,7 @@ public class AuthController {
 
 
     @GetMapping("/auth/validate")
-    public ResponseEntity<?> validateToken(@RequestHeader("X-Auth-Token") String token) throws InvalidCredentialsException {
+    public ResponseEntity<User> validateToken(@RequestHeader("X-Auth-Token") String token) throws InvalidCredentialsException {
         User user = oAuth2Service.validateToken(token);
         return ResponseEntity.ok(user);
     }

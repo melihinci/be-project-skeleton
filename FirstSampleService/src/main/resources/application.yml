@@ -3,14 +3,6 @@ server:
 spring:
   application:
     name: first-service
-  datasource:
-    url: jdbc:mysql://localhost:3306/db_name
-    username: db_username
-    password: db_password
-  jpa:
-    hibernate:
-      ddl-auto: update
-      show-sql: true
   redis:
     host: localhost
     port: 6379
@@ -27,3 +19,8 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans

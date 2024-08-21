@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
@@ -16,30 +18,34 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table
+@Table(name = "dispatch_log", schema = "main")
 public class DispatchLog {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "trace_id")
     private String traceId;
-    @Column
+    @Column(name = "request_body")
     private String requestBody;
-    @Column
+    @Column(name = "response_body")
     private String responseBody;
-    @Column
+    @Column(name = "request_method")
     private String requestMethod;
-    @Column
+    @Column(name = "request_uri")
     private String requestUri;
-    @Column
+    @Column(name = "request_headers")
     private String requestHeaders;
-    @Column
+    @Column(name = "response_headers")
     private String responseHeaders;
-    @Column
+    @Column(name = "response_status")
     private String responseStatus;
-    @Column
+    @Column(name = "request_time")
     private LocalDateTime requestTime;
-    @Column
+    @Column(name = "response_time")
     private LocalDateTime responseTime;
-    @Column
+    @Column(name = "duration")
     private Long duration;
-    @Column
+    @Column(name = "request_ip")
     private String requestIp;
 }

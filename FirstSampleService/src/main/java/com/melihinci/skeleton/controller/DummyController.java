@@ -16,4 +16,12 @@ public class DummyController {
                 .status(200)
                 .build());
     }
+
+    @GetMapping("/first/secured")
+    public ResponseEntity<BaseResponse> secured() {
+        return ResponseEntity.ok(BaseResponse.builder()
+                                             .message("ImAlive.")
+                                             .status(200)
+                                             .build());
+    }
 }

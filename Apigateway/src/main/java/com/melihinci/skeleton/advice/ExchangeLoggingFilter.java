@@ -38,8 +38,8 @@ public class ExchangeLoggingFilter implements GlobalFilter, Ordered {
                           .toString();
             ThreadContext.put("trace_id", traceId);
             exchange.getRequest()
-                    .getHeaders()
-                    .add("X-Trace-Id", traceId);
+                    .mutate()
+                    .headers(httpHeaders -> httpHeaders.add("X-Trace-Id", traceId));
         }
         DispatchLog dispatchLog = saveDispatchLog(exchange, startTime, traceId);
 
@@ -59,7 +59,7 @@ public class ExchangeLoggingFilter implements GlobalFilter, Ordered {
         dispatchLog.setRequestUri(exchange.getRequest()
                                           .getURI()
                                           .toString());
-        dispatchLog.setRequestBody(exchange.getRequest()
+        dispatchLog.setRequestBody(exchange.getRequest()// todo: FİX
                                            .getBody()
                                            .toString());
         dispatchLog.setRequestIp(exchange.getRequest()

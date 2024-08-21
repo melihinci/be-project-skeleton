@@ -3,6 +3,7 @@ package com.melihinci.skeleton.advice;
 import org.apache.logging.log4j.ThreadContext;
 import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,25 +28,28 @@ public class LoggingInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        ContentCachingRequestWrapper cachedRequest = new ContentCachingRequestWrapper(request);
 
-        if (request.getHeader("X-Trace-Id") != null) {
-            ThreadContext.put("trace_id", request.getHeader("X-Trace-Id"));
+        // Trace ID işlemleri
+        if (cachedRequest.getHeader("X-Trace-Id") != null) {
+            ThreadContext.put("trace_id", cachedRequest.getHeader("X-Trace-Id"));
         } else {
-            ThreadContext.put("trace_id", UUID.randomUUID()
-                                              .toString());
+            ThreadContext.put("trace_id", UUID.randomUUID().toString());
         }
-        ThreadContext.put("thread_id", String.valueOf(Thread.currentThread()
-                                                            .getId()));
-        ThreadContext.put("authToken", maskAuthToken(request));
+
+        // Diğer bilgiler
+        ThreadContext.put("thread_id", String.valueOf(Thread.currentThread().getId()));
+        ThreadContext.put("authToken", maskAuthToken(cachedRequest));
         ThreadContext.put("pod_id", pod_id);
         ThreadContext.put("pod_name", appName);
         ThreadContext.put("pod_version", pod_version);
-        ThreadContext.put("request_type", request.getMethod());
-        ThreadContext.put("request_url", request.getRequestURI() + "?" + request.getQueryString());
+        ThreadContext.put("request_type", cachedRequest.getMethod());
+        ThreadContext.put("request_url", cachedRequest.getRequestURI() + "?" + cachedRequest.getQueryString());
+
         try {
-            ThreadContext.put("request_body", request.getReader()
-                                                     .lines()
-                                                     .collect(Collectors.joining(System.lineSeparator())));
+            // Request body'yi okuma
+            String requestBody = new String(cachedRequest.getContentAsByteArray());
+            ThreadContext.put("request_body", requestBody);
         } catch (Exception e) {
             ThreadContext.put("request_body", "");
         }
